@@ -7,6 +7,9 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InfoComponent } from './components/info/info.component';
+import { IntroComponent } from './components/intro/intro.component';
+import { ServiceComponent } from './components/service/service.component';
+import { SharedComponent } from './components/shared/shared.component';
 
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
@@ -28,7 +31,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
         FetchDataComponent,
         HomeComponent,
         HeaderComponent,
-        InfoComponent
+        InfoComponent,
+        IntroComponent,
+        ServiceComponent,
+        SharedComponent
     ],
     imports: [
         CommonModule,

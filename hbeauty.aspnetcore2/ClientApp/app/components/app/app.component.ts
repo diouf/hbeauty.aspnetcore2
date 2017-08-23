@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SharedComponent } from '../shared/shared.component';
+
 
 @Component({
     selector: 'app',
