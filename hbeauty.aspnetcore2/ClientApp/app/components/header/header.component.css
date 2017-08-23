@@ -1,0 +1,70 @@
+﻿.pink-divider {
+    padding-left: 0;
+    padding-right: 0;
+    background: #ec87b3;
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+
+body {
+    font-family: "Open Sans", sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background: #faf1f4;
+}
+
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
+    font-family: Microsoft YaHei,'宋体',Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.logo {
+    /*background-image: url("images/logo.jpg");*/
+}
+
+.img-center {
+    margin: 0 auto;
+}
+
+.pink-divider {
+    padding-left: 0;
+    padding-right: 0;
+    background: #ec87b3;
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+.divider {
+    padding-left: 0;
+    padding-right: 0;
+    height: 20px;
+}
+
+.content {
+    margin: 10px 0
+}
+
+.fa {
+    color: #ec87b3
+}

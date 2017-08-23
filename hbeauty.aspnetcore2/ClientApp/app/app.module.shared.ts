@@ -5,10 +5,16 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app/app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { InfoComponent } from './components/info/info.component';
+
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+
+
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -20,18 +26,22 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        HeaderComponent,
+        InfoComponent
     ],
     imports: [
         CommonModule,
         HttpModule,
         FormsModule,
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: '**', redirectTo: 'home' }
+            //{ path: '', redirectTo: 'header', pathMatch: 'full' },
+            //{ path: 'header', component: HeaderComponent },
+            //{ path: '', redirectTo: 'home', pathMatch: 'full' },
+            //{ path: 'home', component: HomeComponent },
+            //{ path: 'counter', component: CounterComponent },
+            //{ path: 'fetch-data', component: FetchDataComponent },
+            //{ path: '**', redirectTo: 'home' }
         ]),
         AngularFireModule.initializeApp({
             apiKey: "AIzaSyDjcII6dQNqK0oLPclA5WSA-FbF1Rv29T0",
