@@ -1,0 +1,10 @@
+﻿@using hbeauty.aspnetcore2.Models
+@model List<ServiceItem>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name_Chs,@item.Name_Cht,@item.Name_Eng</li>
+    }
+</ul>
+
