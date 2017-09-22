@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using hbeauty.aspnetcore2.Models;
 using Microsoft.EntityFrameworkCore;
-using hbeauty.aspnetcore2.Repositories;
 
 namespace hbeauty_aspnetcore2
 {
