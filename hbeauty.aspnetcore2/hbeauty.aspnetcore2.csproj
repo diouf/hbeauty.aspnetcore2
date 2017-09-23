@@ -23,15 +23,12 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\header\header.component.ts" />
     <None Remove="ClientApp\app\components\service\service.component.ts" />
-    <None Remove="ClientApp\app\components\shared\shared.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\header\header.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\info\info.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\service\service.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\shared\shared.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\welcome\welcome.component.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
