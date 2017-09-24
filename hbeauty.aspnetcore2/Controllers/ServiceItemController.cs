@@ -14,8 +14,21 @@ namespace hbeauty.aspnetcore2.Controllers
         {
             _db = db;
         }
+
+        [Route("api/GetAllServiceItem")]
+        public IEnumerable<ServiceItem> GetAll()
+        {
+            var list = _db.Set<ServiceItem>()
+                .Where(o => !o.Deleted)
+                .OrderByDescending(o => o.ModifiedOn)
+                .ToList();
+
+            return list;
+        }
+
         public IActionResult List()
         {
+            /*
             var r = new Random();
             var order = r.Next(100);
             var newItem = new ServiceItem();
@@ -26,13 +39,15 @@ namespace hbeauty.aspnetcore2.Controllers
 
             _db.Add(newItem);
             _db.SaveChanges();
-
+            */
             var list = _db.Set<ServiceItem>()
                 .Where(o => !o.Deleted)
-                .OrderByDescending(o=>o.ModifiedOn)
+                .OrderByDescending(o => o.ModifiedOn)
                 .ToList();
 
             return View(list);
         }
+
+
     }
 }

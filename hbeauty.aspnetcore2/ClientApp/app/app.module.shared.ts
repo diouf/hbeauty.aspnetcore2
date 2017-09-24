@@ -8,15 +8,12 @@ import { AppComponent } from './components/app/app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InfoComponent } from './components/info/info.component';
 import { IntroComponent } from './components/intro/intro.component';
-import { ServiceComponent } from './components/service/service.component';
 
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
-
-
-
+import { ServiceItemComponent } from './components/serviceitem/serviceitem.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -31,8 +28,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
         HomeComponent,
         HeaderComponent,
         InfoComponent,
-        IntroComponent,
-        ServiceComponent
+        ServiceItemComponent,
+        IntroComponent
     ],
     imports: [
         CommonModule,

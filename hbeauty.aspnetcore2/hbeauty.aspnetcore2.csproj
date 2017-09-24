@@ -26,13 +26,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\header\header.component.ts" />
-    <None Remove="ClientApp\app\components\service\service.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\header\header.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\info\info.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\service\service.component.ts" />
   </ItemGroup>
 
   <ItemGroup>

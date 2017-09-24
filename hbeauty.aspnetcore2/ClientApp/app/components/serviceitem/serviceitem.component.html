@@ -1,6 +1,20 @@
-﻿<div class="row" >
+﻿
+<div class="container" *ngIf="items">
+    <div *ngFor="let item of items" class="row">
+        <div class="col-xs-12">
+            <p>{{item.name_Chs}}</p>
+            <p>{{item.name_Cht}}</p>
+            <p>{{item.name_Eng}}</p>
 
-    <div class="col-xs-12" >
+            <p>{{item.description}}</p>
+            <p>{{item.images.length}}</p>   
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12">
 
         <p class="text-center">
             <strong>水光针</strong>
@@ -11,9 +25,9 @@
         </p>
 
         <img src="https://firebasestorage.googleapis.com/v0/b/hbeauty-298cb.appspot.com/o/SGZ.jpg?alt=media&token=34b14c79-ca62-4e9b-8aa4-c1261554533b"
-             class="img-thumbnail"/>
-        <img src="https://firebasestorage.googleapis.com/v0/b/hbeauty-298cb.appspot.com/o/SGZ2.jpg?alt=media&token=d10b8b46-75e6-4443-a916-4c595263acb8" 
-             class="img-thumbnail"/>
+             class="img-thumbnail" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/hbeauty-298cb.appspot.com/o/SGZ2.jpg?alt=media&token=d10b8b46-75e6-4443-a916-4c595263acb8"
+             class="img-thumbnail" />
     </div>
 
     <div class="col-xs-12">
