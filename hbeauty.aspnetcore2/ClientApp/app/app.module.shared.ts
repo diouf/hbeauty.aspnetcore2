@@ -19,7 +19,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//services
+import { ServiceItemService } from './components/serviceitem/serviceitem.service';
+
 @NgModule({
+    providers:[ServiceItemService],
     declarations: [
         AppComponent,
         NavMenuComponent,
