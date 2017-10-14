@@ -9,17 +9,17 @@ import { ServiceItemService } from './serviceitem.service';
 })
 export class ServiceItemComponent {
     public items: any[];
+    /*
     constructor( private serviceItemService:ServiceItemService ){
     }
     
     OnInit(){
-        this.serviceItemService.getAllServiceItem().subscribe(result => {
-            this.items = result.json();
-            console.log(result);
-            console.log(this.items);
-        }, error => console.error(error));
+        console.log('1');
+        this.serviceItemService.getAllServiceItem();
+        console.log('2');
     }
-    /*
+    */
+    
     constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
         http.get(baseUrl + 'api/GetAllServiceItem').subscribe(result => {
             this.items = result.json();
@@ -29,5 +29,5 @@ export class ServiceItemComponent {
 
         }, error => console.error(error));
     }
-    */
+    
 }

@@ -9,6 +9,10 @@ export class ServiceItemService{
     }
 
     getAllServiceItem() {
-        return this.http.get(this.baseUrl + 'api/GetAllServiceItem');
+        console.log('aaa');
+        //return this.http.get(this.baseUrl + 'api/GetAllServiceItem');
+        this.http.get(this.baseUrl + 'api/GetAllServiceItem').subscribe(
+            (res) => {console.log(res);}
+        )
     }
 }
