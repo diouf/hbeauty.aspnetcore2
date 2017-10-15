@@ -36,12 +36,19 @@ export class ServiceItemComponent  {
         );
         */
 
-        /*
+        
         this.serviceItemService.postServiceItem().subscribe(
             res =>{
                 console.log(res.json());
+            },
+            (error:Response) =>{
+                if(error instanceof NotfoundError ){
+                    // do something
+                }
+                //re-throw to upper level - here is AppErrorHandler
+                else throw error;
             }
         )
-        */
+        
     }
 }
