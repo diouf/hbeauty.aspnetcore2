@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace hbeauty.aspnetcore2.Controllers
 {
@@ -18,16 +19,16 @@ namespace hbeauty.aspnetcore2.Controllers
 
         [Route("api/GetAllServiceItem")]
         [HttpGet]
-        public IEnumerable<ServiceItem> GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var list = _db.Set<ServiceItem>()
+            var list = await  _db.Set<ServiceItem>()
                 .Where(o => !o.Deleted)
                 .OrderByDescending(o => o.ModifiedOn)
-                .ToList();
-            
-            return list;
-        }
+                .ToListAsync();
 
+            return Json(list);
+            //return StatusCode(404);
+        }
         
         [Route("api/ServiceItem/Post")]
         [HttpPost]

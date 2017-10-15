@@ -23,11 +23,10 @@ export class ServiceItemComponent  {
             },
             (error:AppError) => {
                 if(error instanceof NotfoundError){
-                    //this.form.setError(error.originalError);
-                    alert('resource not found');
+                    console.log('resource not found');
+                }else{
+                    console.log('there was an error getting data');
                 }
-
-                alert('there was an error getting data');
             }
         );
         

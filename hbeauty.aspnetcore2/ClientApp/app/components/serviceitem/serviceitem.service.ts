@@ -4,9 +4,17 @@ import { Inject } from '@angular/core';
 import {Injectable} from "@angular/core";
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
-//import 'rxjs/add/Observable/throw';
+
+import {Observable} from 'rxjs/Rx';
+
+/*
+
+import {Observable} from 'rxjs/Rx';
+equals the following two lines - 'rxjs/Rx' contains both Observable and Observable.throw
+import 'rxjs/add/Observable/throw';
 import {Observable} from 'rxjs/Observable';
 
+*/
 @Injectable()
 export class ServiceItemService{
 
@@ -16,9 +24,12 @@ export class ServiceItemService{
     getAllServiceItem() {
         return this.http.get(this.baseUrl + 'api/GetAllServiceItem')
         .catch( (error:Response) => {
-            if(error.status === 404) return Observable.throw(new NotfoundError(error.json() ) );
-            
-            return Observable.throw(new AppError(error) );
+            if(error.status === 404){
+                //return Observable.throw(new NotfoundError(error.json() ) );
+                return Observable.throw(new NotfoundError() );
+            }else{
+                return Observable.throw(new AppError(error) );
+            }
         });
     }
 
