@@ -4,6 +4,7 @@ import { Inject } from '@angular/core';
 import {Injectable} from "@angular/core";
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 import {Observable} from 'rxjs/Rx';
 
@@ -26,11 +27,13 @@ export class DataService{
 
     getAll() {
         return this.http.get(this.url )
+        .map(response => response.json())
         .catch( this.handlError);
     }
     
     create(entity:any){
         return this.http.post(this.url,{"id":111,"name_Eng":"eng_Name"})
+        .map(response => response.json())
         .catch(this.handlError);
     }
     

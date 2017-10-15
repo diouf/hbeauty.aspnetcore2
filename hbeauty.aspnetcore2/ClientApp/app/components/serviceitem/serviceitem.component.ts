@@ -18,13 +18,13 @@ export class ServiceItemComponent  {
     ngOnInit(){
         
         this.serviceItemService.getAll().subscribe(
-            res => this.items = res.json()
+            items => this.items = items
         );
 
         
         this.serviceItemService.create(null).subscribe(
-            res =>{
-                console.log(res.json());
+            item =>{
+                console.log(item);
             },
             (error:Response) =>{
                 if(error instanceof NotfoundError ){
