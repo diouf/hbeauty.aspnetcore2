@@ -1,3 +1,4 @@
+import { ErrorHandler } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,8 +23,13 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 //services
 import { ServiceItemService } from './components/serviceitem/serviceitem.service';
 
+//import {AppErrorHandler} from './app-error-handler';
+
 @NgModule({
-    providers:[ServiceItemService],
+    providers:[
+        ServiceItemService,
+        //{provide:ErrorHandler,useClass:AppErrorHandler}
+    ],
     declarations: [
         AppComponent,
         NavMenuComponent,

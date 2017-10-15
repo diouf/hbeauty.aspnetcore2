@@ -25,7 +25,6 @@ export class ServiceItemService{
         return this.http.get(this.baseUrl + 'api/GetAllServiceItem')
         .catch( (error:Response) => {
             if(error.status === 404){
-                //return Observable.throw(new NotfoundError(error.json() ) );
                 return Observable.throw(new NotfoundError() );
             }else{
                 return Observable.throw(new AppError(error) );

@@ -18,6 +18,11 @@ export class ServiceItemComponent  {
     ngOnInit(){
         
         this.serviceItemService.getAllServiceItem().subscribe(
+            res => this.items = res.json()
+        );
+
+        /*
+        this.serviceItemService.getAllServiceItem().subscribe(
             res => {
                 this.items = res.json();  
             },
@@ -29,11 +34,14 @@ export class ServiceItemComponent  {
                 }
             }
         );
-        
+        */
+
+        /*
         this.serviceItemService.postServiceItem().subscribe(
             res =>{
                 console.log(res.json());
             }
         )
+        */
     }
 }
