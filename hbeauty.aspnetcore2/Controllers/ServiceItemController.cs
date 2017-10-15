@@ -27,7 +27,6 @@ namespace hbeauty.aspnetcore2.Controllers
                 .ToListAsync();
 
             return Json(list);
-            //return StatusCode(404);
         }
         
         [Route("api/ServiceItem/Post")]

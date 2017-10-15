@@ -22,21 +22,18 @@ export class ServiceItemService{
     }
 
     getAllServiceItem() {
-
-        //return Observable.throw(new NotfoundError() );
-        
         return this.http.get(this.baseUrl + 'api/GetAllServiceItem')
-        .catch( (error:Response) => {
-            if(error.status === 404){
-                return Observable.throw(new NotfoundError() );
-            }else{
-                return Observable.throw(new AppError(error) );
-            }
-        });
-        
+        .catch( this.handlError);
     }
 
     postServiceItem(){
-        return this.http.post(this.baseUrl + 'api/ServiceItem/Post',{"id":111,"name_Eng":"eng_Name"});
+        return this.http.post(this.baseUrl + 'api/ServiceItem/Post',{"id":111,"name_Eng":"eng_Name"})
+        .catch(this.handlError);
+    }
+
+    private handlError(error:Response){
+        if(error.status === 404) return Observable.throw(new NotfoundError() );
+        
+        return Observable.throw(new AppError(error) );
     }
 }
