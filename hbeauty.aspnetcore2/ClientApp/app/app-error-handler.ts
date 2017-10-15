@@ -1,12 +1,9 @@
 import {ErrorHandler } from "@angular/core";
 
-
-export class AppErrorHandler extends ErrorHandler
+export class AppErrorHandler implements ErrorHandler
 {
-    handleError(){
-        
+    constructor(){}
+    handleError(error:any){
+        console.log('global error handler.');
     }
-    // handleError(error:any){
-    //    console.log('global error handler.');
-    // }
 }

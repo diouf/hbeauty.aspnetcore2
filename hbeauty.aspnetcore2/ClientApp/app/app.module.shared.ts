@@ -23,12 +23,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 //services
 import { ServiceItemService } from './components/serviceitem/serviceitem.service';
 
-//import {AppErrorHandler} from './app-error-handler';
+import {AppErrorHandler} from './app-error-handler';
 
 @NgModule({
     providers:[
         ServiceItemService,
-        //{provide:ErrorHandler,useClass:AppErrorHandler}
+        {provide:ErrorHandler,useClass:AppErrorHandler}
     ],
     declarations: [
         AppComponent,

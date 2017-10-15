@@ -22,6 +22,9 @@ export class ServiceItemService{
     }
 
     getAllServiceItem() {
+
+        //return Observable.throw(new NotfoundError() );
+        
         return this.http.get(this.baseUrl + 'api/GetAllServiceItem')
         .catch( (error:Response) => {
             if(error.status === 404){
@@ -30,6 +33,7 @@ export class ServiceItemService{
                 return Observable.throw(new AppError(error) );
             }
         });
+        
     }
 
     postServiceItem(){
