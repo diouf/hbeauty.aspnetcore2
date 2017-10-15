@@ -1,11 +1,6 @@
-import { NotfoundError } from './../../not-found-error';
-import { AppError } from './../../app-error';
-import { Inject } from '@angular/core';
+import { DataService } from './../../data.service';
 import {Injectable} from "@angular/core";
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/catch';
-
-import {Observable} from 'rxjs/Rx';
 
 /*
 
@@ -16,24 +11,9 @@ import {Observable} from 'rxjs/Observable';
 
 */
 @Injectable()
-export class ServiceItemService{
+export class ServiceItemService extends DataService{
 
-    constructor(private http:Http,  @Inject('BASE_URL') private baseUrl: string ){
-    }
-
-    getAllServiceItem() {
-        return this.http.get(this.baseUrl + 'api/GetAllServiceItem')
-        .catch( this.handlError);
-    }
-
-    postServiceItem(){
-        return this.http.post(this.baseUrl + 'api/ServiceItem/Post',{"id":111,"name_Eng":"eng_Name"})
-        .catch(this.handlError);
-    }
-
-    private handlError(error:Response){
-        if(error.status === 404) return Observable.throw(new NotfoundError() );
-        
-        return Observable.throw(new AppError(error) );
+    constructor(http:Http){
+        super("api/GetAllServiceItem",http);
     }
 }

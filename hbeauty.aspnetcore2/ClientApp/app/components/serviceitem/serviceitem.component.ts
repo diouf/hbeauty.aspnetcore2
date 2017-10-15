@@ -17,27 +17,12 @@ export class ServiceItemComponent  {
     
     ngOnInit(){
         
-        this.serviceItemService.getAllServiceItem().subscribe(
+        this.serviceItemService.getAll().subscribe(
             res => this.items = res.json()
         );
 
-        /*
-        this.serviceItemService.getAllServiceItem().subscribe(
-            res => {
-                this.items = res.json();  
-            },
-            (error:AppError) => {
-                if(error instanceof NotfoundError){
-                    console.log('resource not found');
-                }else{
-                    console.log('there was an error getting data');
-                }
-            }
-        );
-        */
-
         
-        this.serviceItemService.postServiceItem().subscribe(
+        this.serviceItemService.create(null).subscribe(
             res =>{
                 console.log(res.json());
             },
@@ -49,6 +34,7 @@ export class ServiceItemComponent  {
                 else throw error;
             }
         )
+        
         
     }
 }
