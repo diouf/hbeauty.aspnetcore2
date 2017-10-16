@@ -1,47 +1,4 @@
 ﻿
-<!-- <div class="container" *ngIf="items">
-    <div *ngFor="let item of items" class="row">
-        <div class="col-xs-12">
-            <p>{{item.name_Chs}}</p>
-            <p>{{item.name_Cht}}</p>
-            <p>{{item.name_Eng}}</p>
-
-            <p>{{item.description}}</p>
-            <p>{{item.images.length}}</p>   
-        </div>
-    </div>
-</div> -->
-
-<!-- 
-<div  class="row">
-
-    <div class="col-xs-12">
-
-        <p class="text-center">
-            <strong>水光针</strong>
-        </p>
-
-        <p>
-            一個療程包括三次治療,會因應不同的皮膚狀況及個人喜好,在毛孔和幼紋等部位注射多點劑量,度身訂造每個治療以達致最佳的效果。採用最優良及含有麻醉成分的領導配方,以確保顧客的安全及舒適。臨床研究顯示,水光針治療後,皮膚質素會出現多方面的改善,從內而外提升,保濕 + 61%,光澤 + 60%,膚質 + 59％,彈性 + 56％。
-        </p>
-
-        <img src="https://firebasestorage.googleapis.com/v0/b/hbeauty-298cb.appspot.com/o/SGZ.jpg?alt=media&token=34b14c79-ca62-4e9b-8aa4-c1261554533b"
-             class="img-thumbnail" />
-        <img src="https://firebasestorage.googleapis.com/v0/b/hbeauty-298cb.appspot.com/o/SGZ2.jpg?alt=media&token=d10b8b46-75e6-4443-a916-4c595263acb8"
-             class="img-thumbnail" />
-    </div>
-
-    <div class="col-xs-12">
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/EGgVe7IG4wg"></iframe>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 divider">
-    </div>
-</div> -->
 
 <div *ngFor="let item of items" class="container">
     <div  class="row">
@@ -54,7 +11,7 @@
         
                 <p>{{item.description}}</p>
                 
-                <img *ngFor="let image of images" [src]="url">
+                <img  class="img-thumbnail" *ngFor="let image of item.images" [src]="image.url">
                 
             </div>
         
