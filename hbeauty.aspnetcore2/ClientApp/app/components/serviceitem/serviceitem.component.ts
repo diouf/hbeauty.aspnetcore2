@@ -5,6 +5,8 @@ import { Component, Inject,OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ServiceItemService } from './serviceitem.service';
 
+import {DomSanitizer} from '@angular/platform-browser';
+
 @Component({
     selector: 'service-item',
     templateUrl: './serviceitem.component.html'
@@ -12,7 +14,7 @@ import { ServiceItemService } from './serviceitem.service';
 export class ServiceItemComponent  {
     public items: any[];
     
-    constructor( private serviceItemService:ServiceItemService ){
+    constructor( private serviceItemService:ServiceItemService, private domSanitizer: DomSanitizer ){
     }
     
     ngOnInit(){
@@ -20,7 +22,7 @@ export class ServiceItemComponent  {
         this.serviceItemService.getAll().subscribe(
             items => this.items = items
         );
-
+        
         /*
         this.serviceItemService.create(null).subscribe(
             item =>{
@@ -35,7 +37,10 @@ export class ServiceItemComponent  {
             }
         )
         */
-        
-        
+    }
+
+    handleVidUrl(url:string){
+        return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+        //bypassSecurityTrustUrl for <img>
     }
 }

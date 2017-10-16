@@ -1,5 +1,5 @@
 ﻿
-<div class="container" *ngIf="items">
+<!-- <div class="container" *ngIf="items">
     <div *ngFor="let item of items" class="row">
         <div class="col-xs-12">
             <p>{{item.name_Chs}}</p>
@@ -10,9 +10,10 @@
             <p>{{item.images.length}}</p>   
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="row">
+<!-- 
+<div  class="row">
 
     <div class="col-xs-12">
 
@@ -40,6 +41,35 @@
 <div class="row">
     <div class="col-xs-12 divider">
     </div>
+</div> -->
+
+<div *ngFor="let item of items" class="container">
+    <div  class="row">
+        
+            <div class="col-xs-12">
+        
+                <p class="text-center">
+                    <strong>{{item.name_Cht}}</strong>
+                </p>
+        
+                <p>{{item.description}}</p>
+                
+                <img *ngFor="let image of images" [src]="url">
+                
+            </div>
+        
+            <div *ngFor="let vid of item.videos" class="col-xs-12">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <!-- <iframe class="embed-responsive-item" [src]="vid.url" frameborder="0" allowfullscreen></iframe> -->
+                    <iframe class="embed-responsive-item"
+                    [src]="handleVidUrl(vid.url)">
+                    </iframe>
+                </div>
+            </div>
+    </div>
+        
+    <div class="row">
+        <div class="col-xs-12 divider">
+        </div>
+    </div>
 </div>
-
-
