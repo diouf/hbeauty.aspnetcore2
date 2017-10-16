@@ -22,10 +22,12 @@ namespace hbeauty.aspnetcore2.Controllers
         public async Task<IActionResult> GetAll()
         {
             var list = await  _db.Set<ServiceItem>()
+                .Include(s=>s.Images)
+                .Include(s=>s.Videos)
                 .Where(o => !o.Deleted)
                 .OrderByDescending(o => o.ModifiedOn)
                 .ToListAsync();
-
+            
             return Json(list);
         }
         

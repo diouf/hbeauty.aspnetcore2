@@ -21,7 +21,7 @@ export class ServiceItemComponent  {
             items => this.items = items
         );
 
-        
+        /*
         this.serviceItemService.create(null).subscribe(
             item =>{
                 console.log(item);
@@ -34,6 +34,7 @@ export class ServiceItemComponent  {
                 else throw error;
             }
         )
+        */
         
         
     }

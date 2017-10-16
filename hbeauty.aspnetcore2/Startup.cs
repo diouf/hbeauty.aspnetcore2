@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using hbeauty.aspnetcore2.Models;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace hbeauty_aspnetcore2
 {
@@ -29,7 +31,11 @@ namespace hbeauty_aspnetcore2
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlite(connection)
             );
-            services.AddMvc();
+            services.AddMvc()
+            .AddJsonOptions(options=>{
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
             //services.AddScoped<IHbeautyRepository, HbeautyRepository>();
         }
 
