@@ -2,9 +2,9 @@
 
 <div *ngFor="let item of items" class="container">
     <div  class="row">
-        
+            
             <div class="col-xs-12">
-        
+
                 <p class="text-center">
                     <strong>{{item.name_Cht}}</strong>
                 </p>
@@ -17,9 +17,8 @@
         
             <div *ngFor="let vid of item.videos" class="col-xs-12">
                 <div class="embed-responsive embed-responsive-16by9">
-                    <!-- <iframe class="embed-responsive-item" [src]="vid.url" frameborder="0" allowfullscreen></iframe> -->
                     <iframe class="embed-responsive-item"
-                    [src]="handleVidUrl(vid.url)">
+                    [src]="handleVidUrl(vid.url)" allowfullscreen>
                     </iframe>
                 </div>
             </div>

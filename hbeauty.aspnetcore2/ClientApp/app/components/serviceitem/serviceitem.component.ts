@@ -16,31 +16,14 @@ export class ServiceItemComponent  {
     
     constructor( private serviceItemService:ServiceItemService, private domSanitizer: DomSanitizer ){
     }
-    
+
     ngOnInit(){
-        
         this.serviceItemService.getAll().subscribe(
             items => this.items = items
         );
-        
-        /*
-        this.serviceItemService.create(null).subscribe(
-            item =>{
-                console.log(item);
-            },
-            (error:Response) =>{
-                if(error instanceof NotfoundError ){
-                    // do something
-                }
-                //re-throw to upper level - here is AppErrorHandler
-                else throw error;
-            }
-        )
-        */
     }
 
     handleVidUrl(url:string){
         return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
-        //bypassSecurityTrustUrl for <img>
     }
 }
