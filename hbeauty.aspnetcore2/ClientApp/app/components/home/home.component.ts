@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+//import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
     selector: 'home',
     templateUrl: './home.component.html'
 })
 export class HomeComponent {
-    items: FirebaseListObservable<any[]>;
+    //items: FirebaseListObservable<any[]>;
 
-    constructor(private db: AngularFireDatabase) {
-
-    }
+    //constructor(private db: AngularFireDatabase) {
+    constructor() {}
 
     ngOnInit() {
         //this.items = this.db.list('/cuisines');
