@@ -46,13 +46,9 @@ import {AppErrorHandler} from './app-error-handler';
         HttpModule,
         FormsModule,
         RouterModule.forRoot([
-            //{ path: '', redirectTo: 'header', pathMatch: 'full' },
-            //{ path: 'header', component: HeaderComponent },
-            //{ path: '', redirectTo: 'home', pathMatch: 'full' },
-            //{ path: 'home', component: HomeComponent },
-            //{ path: 'counter', component: CounterComponent },
-            //{ path: 'fetch-data', component: FetchDataComponent },
-            //{ path: '**', redirectTo: 'home' }
+            { path: '', component:HomeComponent},
+            { path: 'fetch-data', component: FetchDataComponent },
+            { path: '**', redirectTo:''}
         ]),
         AngularFireModule.initializeApp({
             apiKey: "AIzaSyDjcII6dQNqK0oLPclA5WSA-FbF1Rv29T0",

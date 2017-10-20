@@ -14,6 +14,6 @@ export class HomeComponent {
     }
 
     ngOnInit() {
-        this.items = this.db.list('/cuisines');
+        //this.items = this.db.list('/cuisines');
     }
 }
