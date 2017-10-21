@@ -1,3 +1,4 @@
+import { AdminServiceItemComponent } from './components/admin-service-item/admin-service-item.component';
 import { ErrorHandler } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -21,7 +22,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 //services
-import { ServiceItemService } from './components/serviceitem/serviceitem.service';
+import { ServiceItemService } from './services/serviceitem.service';
 
 import {AppErrorHandler} from './app-error-handler';
 
@@ -39,7 +40,8 @@ import {AppErrorHandler} from './app-error-handler';
         HeaderComponent,
         InfoComponent,
         ServiceItemComponent,
-        IntroComponent
+        IntroComponent,
+        AdminServiceItemComponent
     ],
     imports: [
         CommonModule,
@@ -47,6 +49,8 @@ import {AppErrorHandler} from './app-error-handler';
         FormsModule,
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
+            {path:'asd',component:AdminServiceItemComponent},
+            { path: 'dion', redirectTo:'asd'},
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo:''}
         ]),

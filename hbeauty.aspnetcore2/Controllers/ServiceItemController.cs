@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace hbeauty.aspnetcore2.Controllers
 {
-    //[Route("api/ServiceItem")]
+    [Route("api/[controller]")]
     public class ServiceItemController: Controller
     {
         private DatabaseContext _db;
@@ -17,7 +17,7 @@ namespace hbeauty.aspnetcore2.Controllers
             _db = db;
         }
 
-        [Route("api/GetAllServiceItem")]
+        //[Route("api/GetAllServiceItem")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -31,22 +31,12 @@ namespace hbeauty.aspnetcore2.Controllers
             return Json(list);
         }
         
-        [Route("api/ServiceItem/Post")]
+        //[Route("api/ServiceItem/Post")]
         [HttpPost]
         public ServiceItem Post( [FromBody] ServiceItem item)
         {
             item.Id=123;
             return item;
-        }
-
-        public IActionResult List()
-        {
-            var list = _db.Set<ServiceItem>()
-                .Where(o => !o.Deleted)
-                .OrderByDescending(o => o.ModifiedOn)
-                .ToList();
-
-            return View(list);
         }
     }
 }

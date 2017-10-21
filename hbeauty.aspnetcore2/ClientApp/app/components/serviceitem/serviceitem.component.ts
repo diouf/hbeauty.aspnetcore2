@@ -3,7 +3,7 @@ import { AppError } from './../../app-error';
 
 import { Component, Inject,OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { ServiceItemService } from './serviceitem.service';
+import { ServiceItemService } from './../../services/serviceitem.service';
 
 import {DomSanitizer} from '@angular/platform-browser';
 
