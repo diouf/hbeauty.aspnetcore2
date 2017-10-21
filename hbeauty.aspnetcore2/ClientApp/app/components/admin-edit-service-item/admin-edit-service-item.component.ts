@@ -8,20 +8,29 @@ import { Component } from '@angular/core';
     styleUrls: ['./admin-edit-service-item.component.css']
 })
 export class AdminEditServiceItemComponent {
-    item:any;
     
-    model={
-        name_Cht:'',
-        description:'some comment here...'
-      };
+    model:any;
+    
+    /*
+    model = {
+        name_Cht:'111',
+        description:'222',
+        name_Eng:'333',
+        description_Eng:'444'
+    };
+    */
 
-    constructor( private serviceItemService:ServiceItemService, private domSanitizer: DomSanitizer ){
-    }
-
+    constructor( private serviceItemService:ServiceItemService, private domSanitizer: DomSanitizer ){}
+    
     ngOnInit(){
+        
         this.serviceItemService.getById(0).subscribe(
-           item => this.item = item
+            model => {
+               this.model = model;
+               console.log(this.model);
+            }
         );
+        
     }
 
     onSubmit(){

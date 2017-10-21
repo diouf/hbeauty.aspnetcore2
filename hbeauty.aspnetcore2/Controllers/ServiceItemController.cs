@@ -17,7 +17,6 @@ namespace hbeauty.aspnetcore2.Controllers
             _db = db;
         }
 
-        //[Route("api/GetAllServiceItem")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -31,8 +30,6 @@ namespace hbeauty.aspnetcore2.Controllers
             return Json(list);
         }
         
-        
-        //[HttpGet("{id}", Name = "GetTodo")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -41,16 +38,32 @@ namespace hbeauty.aspnetcore2.Controllers
                 .Include(s=>s.Videos)
                 .SingleOrDefaultAsync(o => !o.Deleted && o.Id == id);
 
-            if(item == null) item = new ServiceItem();  
-
+            if(item == null)item = new ServiceItem();
+            
             return Json(item);
         }
         
         [HttpPost]
-        public ServiceItem Post( [FromBody] ServiceItem item)
+        public async Task<IActionResult> Post( [FromBody] ServiceItem item)
         {
-            item.Id=123;
-            return item;
+            if(item.Id == 0)
+            {
+                item.CreatedBy = "Dion";
+                item.CreatedOn = DateTime.UtcNow;
+                item.ModifiedBy = "Dion";
+                item.ModifiedOn = DateTime.UtcNow;
+
+                await  _db.Set<ServiceItem>().AddAsync(item);
+            }
+            else
+            {
+                item.ModifiedBy = "Dion";
+                item.ModifiedOn = DateTime.UtcNow;
+                _db.Entry(item);
+            }
+
+            await _db.SaveChangesAsync();
+            return Json(item);
         }
     }
 }

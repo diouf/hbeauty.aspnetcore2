@@ -19,6 +19,7 @@ namespace hbeauty.aspnetcore2.Models
         public string Name_Eng { get; set; }
 
         public string Description { get; set; }
+        public string Description_Eng { get; set; }
 
         public List<ServiceItemImage> Images { get; private set; }
         public List<ServiceItemVideo> Videos { get; private set; }
