@@ -31,23 +31,30 @@ export class DataService{
         .catch( this.handlError);
     }
     
-    create(entity:any){
-        return this.http.post(this.url,{"id":111,"name_Eng":"eng_Name"})
+    getById(id:number){
+        return this.http.get(this.url+'/'+id )
         .map(response => response.json())
-        .catch(this.handlError);
-    }
-    
-    /*
-    getAll() {
-        return this.http.get(this.baseUrl + this.url )
         .catch( this.handlError);
     }
 
     create(entity:any){
-        return this.http.post(this.baseUrl + this.url,{"id":111,"name_Eng":"eng_Name"})
+        return this.http.post(this.url,entity)
+        .map(response => response.json())
         .catch(this.handlError);
     }
-    */
+    
+    update(entity:any){
+        return this.http.post(this.url,entity)
+        .map(response => response.json())
+        .catch(this.handlError);
+    }
+
+    delete(id:number){
+        return this.http.delete(this.url+'/'+id)
+        .map(response => response.json())
+        .catch(this.handlError);
+    }
+    
     private handlError(error:Response){
         if(error.status === 404) return Observable.throw(new NotfoundError() );
         

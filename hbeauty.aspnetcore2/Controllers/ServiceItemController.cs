@@ -31,7 +31,21 @@ namespace hbeauty.aspnetcore2.Controllers
             return Json(list);
         }
         
-        //[Route("api/ServiceItem/Post")]
+        
+        //[HttpGet("{id}", Name = "GetTodo")]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var item = await _db.Set<ServiceItem>()
+                .Include(s=>s.Images)
+                .Include(s=>s.Videos)
+                .SingleOrDefaultAsync(o => !o.Deleted && o.Id == id);
+
+            if(item == null) item = new ServiceItem();  
+
+            return Json(item);
+        }
+        
         [HttpPost]
         public ServiceItem Post( [FromBody] ServiceItem item)
         {

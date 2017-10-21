@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-area">  
+                <form role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" >
+                    <div class="form-group">
+                        <label for="name_Cht">中文名</label>
+                        <input [(ngModel)]="model.name_Cht" 
+                        type="text" class="form-control" id="name_Cht" name="name_Cht" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">中文名</label>
+                        <textarea [(ngModel)] = "model.description"
+                        class="form-control" type="textarea" id="description" name="description" rows="7"></textarea>
+                                            
+                    </div>
+                    
+                    <button [disabled]="!f.valid" class="btn btn-primary">保存</button>
+
+                    {{f.value | json }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

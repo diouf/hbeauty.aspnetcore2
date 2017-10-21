@@ -1,9 +1,13 @@
 <div class="container">
     <div class="row">
+            <a class="btn btn-primary">新增</a>
+    </div>
+    <div class="row">
         <div class="col-xs-12">
             <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>名称</th>
                             <th>说明</th>
                             <th>图片数量</th>
@@ -12,6 +16,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of items">
+                            <td> <a href="javascript:void(0);">浏览详情</a> </td>
                             <td>{{item.name_Cht}}</td>
                             <td>{{item.description | summary:50}}</td>
                             <td>{{item.images.length}}</td>

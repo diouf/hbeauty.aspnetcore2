@@ -4,7 +4,8 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'admin-servie-item',
-    templateUrl:'./admin-service-item.component.html'
+    templateUrl:'./admin-service-item.component.html',
+    styleUrls: ['./admin-service-item.component.css']
 })
 export class AdminServiceItemComponent {
     items:any[];
@@ -17,5 +18,4 @@ export class AdminServiceItemComponent {
             items => this.items = items
         );
     }
-
 }
