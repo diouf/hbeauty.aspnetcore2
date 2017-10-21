@@ -5,10 +5,19 @@
                     <thead>
                         <tr>
                             <th>名称</th>
-                            <th>图片</th>
-                            <th></th>
+                            <th>说明</th>
+                            <th>图片数量</th>
+                            <th>视频数量</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items">
+                            <td>{{item.name_Cht}}</td>
+                            <td>{{item.description | summary:50}}</td>
+                            <td>{{item.images.length}}</td>
+                            <td>{{item.videos.length}}</td>
+                        </tr>
+                    </tbody>
             </table>
         </div>
     </div>

@@ -13,7 +13,9 @@ export class AdminServiceItemComponent {
     }
 
     ngOnInit(){
-
+        this.serviceItemService.getAll().subscribe(
+            items => this.items = items
+        );
     }
 
 }
