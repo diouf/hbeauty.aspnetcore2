@@ -1,13 +1,17 @@
 
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
-<div class="container">
+
+ <div class="container">
     <div [hidden]="editing" class="row">
         <div class="col-xs-12">
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col col-xs-6 text-left">
+                            <div class="col col-xs-6 text-left">
+                                服务项目
+                            </div>
+                        <div class="col col-xs-6 text-right">
                             <button (click)="getItem(0)" type="button" class="btn btn-sm btn-primary btn-create">新增</button>
                         </div>
                     </div>
@@ -49,7 +53,7 @@
 
     <div [hidden]="!editing" class="row">
         <div class="col-xs-12">
-           <div class="form-area">
+           <!-- <div class="form-area">
                 <form *ngIf="model != null" role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" >
                         
                         <div class="form-group">
@@ -63,7 +67,7 @@
                             <label for="description">中文描述</label>
                             <textarea 
                             [(ngModel)] = "model.description"
-                            class="form-control" type="textarea" id="description" name="description" rows="7"></textarea>
+                            class="form-control" type="textarea" id="description" name="description" rows="20"></textarea>
                         </div>
                         
                         <div class="form-group">
@@ -77,15 +81,102 @@
                             <label for="description_Eng">英文描述</label>
                             <textarea 
                             [(ngModel)] = "model.description_Eng"
-                            class="form-control" type="textarea" id="description_Eng" name="description_Eng" rows="7"></textarea>
+                            class="form-control" type="textarea" id="description_Eng" name="description_Eng" rows="20"></textarea>
                         </div>
     
                         <button [disabled]="!f.valid" class="btn btn-primary">保存</button>
                         <button (click)="editing = false; model = null;" class="btn btn-default">取消</button>
                 </form>
-           </div>
+           </div> -->
+        </div>
+
+    <div class="panel-group" id="accordion">
+            
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">信息</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="form-area">
+                        <form *ngIf="model != null" role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" >
+                            
+                            <div class="form-group">
+                                <label for="name_Cht">中文名</label>
+                                <input 
+                                [(ngModel)] = "model.name_Cht"
+                                type="text" class="form-control" id="name_Cht" name="name_Cht" required>
+                            </div>
+                                
+                            <div class="form-group">
+                                <label for="description">中文描述</label>
+                                <textarea 
+                                [(ngModel)] = "model.description"
+                                class="form-control" type="textarea" id="description" name="description" rows="20"></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                    <label for="name_Eng">英文名</label>
+                                    <input 
+                                    [(ngModel)] = "model.name_Eng"
+                                    type="text" class="form-control" id="name_Eng" name="name_Eng" required>
+                            </div>
+                                
+                            <div class="form-group">
+                                <label for="description_Eng">英文描述</label>
+                                <textarea 
+                                [(ngModel)] = "model.description_Eng"
+                                class="form-control" type="textarea" id="description_Eng" name="description_Eng" rows="20"></textarea>
+                            </div>
+        
+                            <button [disabled]="!f.valid" class="btn btn-primary">保存</button>
+                            <button (click)="editing = false; model = null;" class="btn btn-default">取消</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">图片</a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <form *ngIf="model != null" role="form" #fImage="ngForm" (ngSubmit)="onImageSubmit(fImage)" >
+                            
+                        <div class="form-group">
+                            <input ngModel name="imageurl" (change)="onImageFileChange($event)" 
+                            multiple  type="file"  class="form-control">
+                        </div>
+    
+                        <button [disabled]="!fImage.valid" class="btn btn-primary">保存</button>
+                        <button (click)="editing = false; model = null;" class="btn btn-default">取消</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">视频</a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p>CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc. <a href="https://www.tutorialrepublic.com/css-tutorial/" target="_blank">Learn more.</a></p>
+                </div>
+            </div>
         </div>
     </div>
 
-</div>
+    </div>
+</div> 
     

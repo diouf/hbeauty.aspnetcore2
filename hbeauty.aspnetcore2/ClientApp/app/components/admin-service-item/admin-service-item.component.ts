@@ -1,4 +1,4 @@
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { ServiceItemService } from './../../services/serviceitem.service';
 import { Component } from '@angular/core';
 
@@ -14,7 +14,7 @@ export class AdminServiceItemComponent {
     items:any[];
     model:any = null;
 
-    constructor( private serviceItemService:ServiceItemService, private domSanitizer: DomSanitizer ){
+    constructor( private serviceItemService:ServiceItemService ){
     }
 
     ngOnInit(){
@@ -54,5 +54,13 @@ export class AdminServiceItemComponent {
                 this.editing = false;
             }
         );
+    }
+
+    onImageSubmit(form:any){
+        console.log(form);
+    }
+
+    onImageFileChange(event:any){
+        console.log(event);
     }
 }
