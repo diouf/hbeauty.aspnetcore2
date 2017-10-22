@@ -24,6 +24,7 @@ export class ServiceItemComponent  {
     }
 
     handleVidUrl(url:string){
+        if(url.length===0) return null;
         return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
     }
 }
