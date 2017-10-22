@@ -28,6 +28,8 @@ import {AppErrorHandler} from './app-error-handler';
 //pipes
 import { Summary } from './pipes/Summary';
 
+import {LoadingModule} from 'ngx-loading';
+
 @NgModule({
     providers:[
         ServiceItemService,
@@ -51,6 +53,7 @@ import { Summary } from './pipes/Summary';
         CommonModule,
         HttpModule,
         FormsModule,
+        LoadingModule,
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
             { path:'asd',component:AdminServiceItemComponent},

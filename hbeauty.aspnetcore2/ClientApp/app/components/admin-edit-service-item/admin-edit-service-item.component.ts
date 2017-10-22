@@ -9,17 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AdminEditServiceItemComponent {
     
-    model:any;
+    model:any = null;
     
-    /*
-    model = {
-        name_Cht:'111',
-        description:'222',
-        name_Eng:'333',
-        description_Eng:'444'
-    };
-    */
-
     constructor( private serviceItemService:ServiceItemService, private domSanitizer: DomSanitizer ){}
     
     ngOnInit(){
