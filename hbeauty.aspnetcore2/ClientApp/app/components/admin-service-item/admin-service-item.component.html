@@ -2,7 +2,7 @@
 <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 
 <div class="container">
-    <div class="row">
+    <div [hidden]="editing" class="row">
         <div class="col-xs-12">
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
@@ -17,11 +17,11 @@
                         <thead>
                             <tr>
                                 <th><em class="fa fa-cog"></em></th>
-                                <th class="hidden-x">ID</th>
+                                <th class="hidden-xs">ID</th>
                                 <th>中文名称</th>
-                                <th>中文描述</th>
+                                <th class="hidden-xs">中文描述</th>
                                 <th>英文名称</th>
-                                <th>英文描述</th>
+                                <th class="hidden-xs">英文描述</th>
                                 <th>图片</th>
                                 <th>视频</th>
                             </tr> 
@@ -34,9 +34,9 @@
                                     </td>
                                     <td class="hidden-xs">{{item.id}}</td>
                                     <td>{{item.name_Cht}}</td>
-                                    <td>{{item.description | summary:50}}</td>
+                                    <td class="hidden-xs">{{item.description | summary:50}}</td>
                                     <td>{{item.name_Eng}}</td>
-                                    <td>{{item.description_Eng | summary:50}}</td>
+                                    <td class="hidden-xs">{{item.description_Eng | summary:50}}</td>
                                     <td>{{item.images.length}}</td>
                                     <td>{{item.videos.length}}</td>
                                 </tr>
@@ -47,12 +47,12 @@
         </div>
     </div>
 
-    <div class="row">
+    <div [hidden]="!editing" class="row">
         <div class="col-xs-12">
            <div class="form-area">
                 <form *ngIf="model != null" role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" >
                         
-                        <div class="form-group has-error">
+                        <div class="form-group">
                             <label for="name_Cht">中文名</label>
                             <input 
                             [(ngModel)] = "model.name_Cht"
@@ -81,6 +81,7 @@
                         </div>
     
                         <button [disabled]="!f.valid" class="btn btn-primary">保存</button>
+                        <button (click)="editing = false; model = null;" class="btn btn-default">取消</button>
                 </form>
            </div>
         </div>
@@ -88,34 +89,3 @@
 
 </div>
     
-
-
-<!-- <div class="container">
-    <div class="row">
-            <a class="btn btn-primary">新增</a>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>名称</th>
-                            <th>说明</th>
-                            <th>图片数量</th>
-                            <th>视频数量</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of items">
-                            <td> <a href="javascript:void(0);">浏览详情</a> </td>
-                            <td>{{item.name_Cht}}</td>
-                            <td>{{item.description | summary:50}}</td>
-                            <td>{{item.images.length}}</td>
-                            <td>{{item.videos.length}}</td>
-                        </tr>
-                    </tbody>
-            </table>
-        </div>
-    </div>
-</div> -->

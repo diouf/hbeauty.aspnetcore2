@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 export class AdminServiceItemComponent {
 
     loading = false;
-
+    editing = false;
     items:any[];
     model:any = null;
 
@@ -18,8 +18,12 @@ export class AdminServiceItemComponent {
     }
 
     ngOnInit(){
+        this.loading = true;
         this.serviceItemService.getAll().subscribe(
-            items => this.items = items
+            items => {
+                this.items = items;
+                this.loading = false;
+            }
         );
     }
 
@@ -29,15 +33,25 @@ export class AdminServiceItemComponent {
             model=> {
                 this.model = model; 
                 this.loading = false;
+                this.editing = true;
             }
         );
     }
 
     onSubmit(){
+        this.loading = true;
         this.serviceItemService.create(this.model).subscribe(
-            res=> {
-                console.log(res);
-                console.log('done');
+            data=> {
+                console.log(data);
+                var index = this.items.findIndex(i=>i.id === data.id);
+                if(index === -1) this.items.unshift(data);
+                else {
+                    this.items.splice(index,1);
+                    this.items.unshift(data);
+                }
+                
+                this.loading = false;
+                this.editing = false;
             }
         );
     }

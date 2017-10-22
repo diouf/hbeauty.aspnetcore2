@@ -59,7 +59,7 @@ namespace hbeauty.aspnetcore2.Controllers
             {
                 item.ModifiedBy = "Dion";
                 item.ModifiedOn = DateTime.UtcNow;
-                _db.Entry(item);
+                _db.Entry(item).State = EntityState.Modified;
             }
 
             await _db.SaveChangesAsync();
