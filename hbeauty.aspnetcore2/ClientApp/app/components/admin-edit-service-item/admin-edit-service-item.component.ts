@@ -8,18 +8,10 @@ import { Component } from '@angular/core';
     styleUrls: ['./admin-edit-service-item.component.css']
 })
 export class AdminEditServiceItemComponent {
-    
-    
+
     constructor( private serviceItemService:ServiceItemService,private fileService: FileService){}
     
-    ngOnInit(){}
-
-    onImageSubmit(f:any){
-        console.log(f);
-    }
-
     onImageFileChange (event:any){
-        console.log(event);
         let files = event.target.files; 
         this.saveFiles(files);
     }
