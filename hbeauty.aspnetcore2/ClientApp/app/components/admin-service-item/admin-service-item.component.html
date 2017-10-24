@@ -148,8 +148,8 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <form *ngIf="model != null" role="form" #fImage="ngForm" (ngSubmit)="onImageSubmit(fImage)" >
-                            
+                    <form *ngIf="model != null" role="form" #fImage="ngForm">
+                        
                         <div class="form-group">
                             <input ngModel name="imageurl" (change)="onImageFileChange($event)" 
                             multiple  type="file"  class="form-control">

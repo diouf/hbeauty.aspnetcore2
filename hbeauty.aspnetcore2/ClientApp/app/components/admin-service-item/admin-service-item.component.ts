@@ -1,6 +1,7 @@
 
 import { ServiceItemService } from './../../services/serviceitem.service';
 import { Component } from '@angular/core';
+import { FileService } from './../../services/file.service';
 
 @Component({
     selector: 'admin-servie-item',
@@ -14,7 +15,7 @@ export class AdminServiceItemComponent {
     items:any[];
     model:any = null;
 
-    constructor( private serviceItemService:ServiceItemService ){
+    constructor( private serviceItemService:ServiceItemService,private fileService: FileService ){
     }
 
     ngOnInit(){
@@ -56,11 +57,30 @@ export class AdminServiceItemComponent {
         );
     }
 
-    onImageSubmit(form:any){
-        console.log(form);
-    }
-
-    onImageFileChange(event:any){
+    onImageFileChange (event:any){
         console.log(event);
+        let files = event.target.files; 
+        this.saveFiles(files);
+    }
+    
+    private saveFiles(files:any[]){
+        if(files.length === 0 ) return;
+
+        let formData :FormData = new FormData();
+        for (var j = 0; j < files.length; j++) {
+            formData.append("file[]", files[j], files[j].name);
+        }
+
+        var parameters = {
+            serviceItemId:this.model.id
+        }
+
+        this.fileService.uploadServiceItemImage(formData,parameters)
+        .subscribe(
+            data=>{
+                console.log(data);
+            }
+        )
+        
     }
 }

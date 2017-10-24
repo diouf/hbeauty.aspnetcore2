@@ -50,7 +50,7 @@ namespace hbeauty.aspnetcore2.Controllers
                     
 
                     _db.Set<ServiceItemImage>().Add(image);
-                    //await _db.SaveChangesAsync();
+                    await _db.SaveChangesAsync();
                 }
 
                 return Json(new{ done=true} );
