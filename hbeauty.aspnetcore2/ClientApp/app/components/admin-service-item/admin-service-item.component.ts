@@ -45,6 +45,7 @@ export class AdminServiceItemComponent {
 
     onSubmit(){
         this.loading = true;
+        
         this.serviceItemService.create(this.model).subscribe(
             data=> {
                 console.log(data);
@@ -56,9 +57,9 @@ export class AdminServiceItemComponent {
                 }
                 
                 this.loading = false;
-                this.editing = false;
             }
         );
+        
     }
 
     deleteImage(img:any) {

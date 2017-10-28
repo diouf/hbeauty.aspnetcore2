@@ -1,6 +1,11 @@
+.backdrop{
+  position: fixed !important;
+}
+
 .btn {
   color: #ec87b3;
 }
+
 input, select, textarea {
     max-width: 100%;
 }
