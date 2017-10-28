@@ -23,6 +23,7 @@ import { AdminEditServiceItemComponent } from './components/admin-edit-service-i
 //services
 import { ServiceItemService } from './services/serviceitem.service';
 import { FileService } from './services/file.service';
+import { ServiceItemVideoService } from './services/serviceitemvideo.service';
 
 import {AppErrorHandler} from './app-error-handler';
 
@@ -35,6 +36,7 @@ import {LoadingModule} from 'ngx-loading';
     providers:[
         ServiceItemService,
         FileService,
+        ServiceItemVideoService,
         {provide:ErrorHandler,useClass:AppErrorHandler}
     ],
     declarations: [

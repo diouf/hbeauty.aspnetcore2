@@ -42,10 +42,7 @@
                                     <td>{{item.name_Eng}}</td>
                                     <td class="hidden-xs">{{item.description_Eng | summary:50}}</td>
                                     <td>{{item.images.length}}</td>
-                                    <td>
-                                        {{item.videos.length}}
-                                        
-                                    </td>
+                                    <td>{{item.videos.length}}</td>
                                 </tr>
                         </tbody>
                     </table>
@@ -142,8 +139,42 @@
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <!-- {{ model.videos | json }} -->
+                    <div *ngIf="model != null" class="panel-body">
+                        <form #fVideo="ngForm" (ngSubmit)="onVideoSubmit(fVideo)">
+                            <table class="table table-striped table-bordered table-list">
+                                <tbody>
+                                    <tr *ngFor="let v of model.videos">
+                                        <td class="col-xs-2"><a (click)="deleteVideo(v)" class="btn btn-default"><em class="fa fa-trash"></em></a></td>
+                                        <td class="col-xs-10">
+                                            <div *ngIf="v.url.length>0" class="embed-responsive embed-responsive-16by9">
+                                                    <iframe [src]="handleVidUrl(v.url)" class="embed-responsive-item" allowfullscreen>
+                                                    </iframe>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                                <tfoot>
+                                    <tr>
+                                        <div class="form-group">
+                                            <label>{{model.name_Cht}}的视频网址</label>
+                                            <input
+                                            [(ngModel)] = "model.id" style="display:none;"
+                                            type="text" class="form-control" name="serviceItemId" >
+                                            
+                                            <input 
+                                            ngModel
+                                            type="text" class="form-control" name="url" required>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="9">
+                                            <button [disabled]="!fVideo.valid" class="btn btn-default">保存</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
                     </div>
                 </div>
             </div>

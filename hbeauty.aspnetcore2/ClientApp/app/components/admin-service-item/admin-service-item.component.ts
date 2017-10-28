@@ -1,5 +1,7 @@
 
 import { ServiceItemService } from './../../services/serviceitem.service';
+import { ServiceItemVideoService } from './../../services/serviceitemvideo.service';
+
 import { Component } from '@angular/core';
 import { FileService } from './../../services/file.service';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -16,8 +18,8 @@ export class AdminServiceItemComponent {
     items:any[];
     model:any = null;
 
-    constructor( private serviceItemService:ServiceItemService,private fileService: FileService,
-        private domSanitizer: DomSanitizer ){
+    constructor( private serviceItemService:ServiceItemService, private fileService: FileService,
+        private domSanitizer: DomSanitizer,private serviceItemVideoService : ServiceItemVideoService ){
     }
 
     ngOnInit(){
@@ -115,7 +117,30 @@ export class AdminServiceItemComponent {
     }
 
     deleteVideo(v:any){
-        console.log(v);
+        if( !confirm('确定删除该视频?') ) return false;
+
+        this.loading = true;
+        this.serviceItemVideoService.delete(v.id).subscribe(
+            res =>{
+                
+                var videos = this.model.videos as any[];
+                var imgIndex = videos.findIndex(x => x.id == v.id);
+                this.model.videos.splice(imgIndex,1);
+                this.loading = false;
+            }
+        );
+    }
+
+    onVideoSubmit(fVideo:any){
+
+        this.loading = true;
+        var item = fVideo.value;
+        this.serviceItemVideoService.create(item).subscribe(
+            data => {
+                this.model.videos.unshift(data);
+                this.loading = false;
+            }
+        )
     }
 
 }
