@@ -2,6 +2,7 @@
 import { ServiceItemService } from './../../services/serviceitem.service';
 import { Component } from '@angular/core';
 import { FileService } from './../../services/file.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
     selector: 'admin-servie-item',
@@ -15,7 +16,8 @@ export class AdminServiceItemComponent {
     items:any[];
     model:any = null;
 
-    constructor( private serviceItemService:ServiceItemService,private fileService: FileService ){
+    constructor( private serviceItemService:ServiceItemService,private fileService: FileService,
+        private domSanitizer: DomSanitizer ){
     }
 
     ngOnInit(){
@@ -57,8 +59,24 @@ export class AdminServiceItemComponent {
         );
     }
 
+    deleteImage(img:any) {
+
+        if( !confirm('确定删除该图片?') ) return false;
+
+        this.loading = true;
+        this.serviceItemService.deleteImage(img.id,img.url)
+        .subscribe(res=>{
+            if(res.done){
+                var images = this.model.images as any[];
+                var imgIndex = images.findIndex(x => x.id == img.id);
+                this.model.images.splice(imgIndex,1);
+                this.loading = false;
+            }
+        });
+    }
+
+
     onImageFileChange (event:any){
-        console.log(event);
         let files = event.target.files; 
         this.saveFiles(files);
     }
@@ -74,13 +92,30 @@ export class AdminServiceItemComponent {
         var parameters = {
             serviceItemId:this.model.id
         }
-
+        
+        this.loading = true;
         this.fileService.uploadServiceItemImage(formData,parameters)
+
         .subscribe(
-            data=>{
-                console.log(data);
+            res=>{
+                if(res.done){
+                    this.model.images.push(res.newImage);
+                    this.loading = false;
+                }else{
+                    alert(res.msg);
+                } 
             }
         )
         
     }
+
+    handleVidUrl(url:string){
+        if(url.length===0) return null;
+        return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+
+    deleteVideo(v:any){
+        console.log(v);
+    }
+
 }

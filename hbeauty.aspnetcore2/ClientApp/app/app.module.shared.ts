@@ -58,9 +58,9 @@ import {LoadingModule} from 'ngx-loading';
         LoadingModule,
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
-            { path:'asd',component:AdminServiceItemComponent},
+            { path:'h-admin',component:AdminServiceItemComponent},
             { path:'asd-edit-item',component:AdminEditServiceItemComponent},
-            { path: 'dion', redirectTo:'asd'},
+            { path: 'dion', redirectTo:'h-admin'},
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo:''}
         ]),

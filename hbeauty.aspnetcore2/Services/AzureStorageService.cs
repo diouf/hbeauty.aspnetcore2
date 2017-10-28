@@ -35,5 +35,19 @@ namespace hbeauty_aspnetcore2.Sevices
             await blockBlob.UploadFromStreamAsync(fileStream);
         }
 
+        public static async Task DeleteProductImage(string fileName)
+        {
+            // Create the blob client.
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+            // Retrieve reference to a previously created container.
+            CloudBlobContainer container = blobClient.GetContainerReference("service-item-images");
+
+            // Retrieve reference to a blob
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName);
+            
+            await blockBlob.DeleteIfExistsAsync();
+        }
+
     }
 }

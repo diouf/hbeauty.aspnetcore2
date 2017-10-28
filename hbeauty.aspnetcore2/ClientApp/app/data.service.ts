@@ -22,7 +22,7 @@ export class DataService{
     // constructor(private url:string, private http:Http,  @Inject('BASE_URL') private baseUrl?: string ){
     // }
 
-    constructor(private url:string, private http:Http){
+    constructor(private url:string, protected http:Http){
     }
 
     getAll() {
@@ -55,7 +55,7 @@ export class DataService{
         .catch(this.handlError);
     }
     
-    private handlError(error:Response){
+    protected handlError(error:Response){
         if(error.status === 404) return Observable.throw(new NotfoundError() );
         
         return Observable.throw(new AppError(error) );
