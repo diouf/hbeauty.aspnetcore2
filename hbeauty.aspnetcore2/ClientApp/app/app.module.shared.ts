@@ -30,7 +30,6 @@ import {AppErrorHandler} from './app-error-handler';
 //pipes
 import { Summary } from './pipes/Summary';
 
-import {LoadingModule} from 'ngx-loading';
 
 @NgModule({
     providers:[
@@ -57,7 +56,7 @@ import {LoadingModule} from 'ngx-loading';
         CommonModule,
         HttpModule,
         FormsModule,
-        LoadingModule,
+        
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
             { path:'h-admin',component:AdminServiceItemComponent},

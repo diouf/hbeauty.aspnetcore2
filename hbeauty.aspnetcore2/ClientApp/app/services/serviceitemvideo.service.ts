@@ -7,6 +7,6 @@ import { Http } from '@angular/http';
 export class ServiceItemVideoService extends DataService{
 
     constructor( http:Http){
-        super("api/ServiceItemVideo",http);
+        super(http,"api/ServiceItemVideo");
     }
 }

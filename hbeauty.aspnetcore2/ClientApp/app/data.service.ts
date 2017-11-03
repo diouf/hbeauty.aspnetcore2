@@ -16,13 +16,13 @@ import 'rxjs/add/Observable/throw';
 import {Observable} from 'rxjs/Observable';
 
 */
-@Injectable()
+//@Injectable()
 export class DataService{
 
     // constructor(private url:string, private http:Http,  @Inject('BASE_URL') private baseUrl?: string ){
     // }
 
-    constructor(private url:string, protected http:Http){
+    constructor(protected http:Http, private url:string){
     }
 
     getAll() {

@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
 export class ServiceItemService extends DataService{
 
     constructor( http:Http){
-        super("api/ServiceItem",http);
+        super(http,"api/ServiceItem");
     }
 
     deleteImage(id:number,fileName:string){
