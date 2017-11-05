@@ -17,6 +17,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ServiceItemComponent } from './components/serviceitem/serviceitem.component';
 
+import { AdminComponent } from './components/admin/admin.component';
 import { AdminServiceItemComponent } from './components/admin-service-item/admin-service-item.component';
 import { AdminEditServiceItemComponent } from './components/admin-edit-service-item/admin-edit-service-item.component';
 
@@ -48,6 +49,7 @@ import { Summary } from './pipes/Summary';
         InfoComponent,
         ServiceItemComponent,
         IntroComponent,
+        AdminComponent,
         AdminServiceItemComponent,
         AdminEditServiceItemComponent,
         Summary
@@ -56,9 +58,16 @@ import { Summary } from './pipes/Summary';
         CommonModule,
         HttpModule,
         FormsModule,
-        
+        ///admin/serviceitems
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
+
+            { path: 'ad', component:AdminComponent,
+              children:[{
+                  path: 'serviceitems', component: AdminServiceItemComponent
+              }]
+            },
+            
             { path:'h-admin',component:AdminServiceItemComponent},
             { path:'asd-edit-item',component:AdminEditServiceItemComponent},
             { path: 'dion', redirectTo:'h-admin'},
