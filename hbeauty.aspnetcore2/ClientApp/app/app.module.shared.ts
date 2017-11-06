@@ -58,19 +58,18 @@ import { Summary } from './pipes/Summary';
         CommonModule,
         HttpModule,
         FormsModule,
-        ///admin/serviceitems
+        
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
 
             { path: 'ad', component:AdminComponent,
-              children:[{
-                  path: 'serviceitems', component: AdminServiceItemComponent
-              }]
+              children:[
+                  {path: 'serviceitems', component: AdminServiceItemComponent},
+                  {path: 'serviceitems/:serviceItemId', component: AdminEditServiceItemComponent},
+                ]
             },
-            
-            { path:'h-admin',component:AdminServiceItemComponent},
-            { path:'asd-edit-item',component:AdminEditServiceItemComponent},
-            { path: 'dion', redirectTo:'h-admin'},
+
+            { path: 'dion', redirectTo:'ad'},
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo:''}
         ]),
