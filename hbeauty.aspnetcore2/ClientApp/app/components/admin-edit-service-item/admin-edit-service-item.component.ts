@@ -5,6 +5,9 @@ import { Component } from '@angular/core';
 import { ServiceItemVideoService } from './../../services/serviceitemvideo.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
+import {SimpleNotificationsComponent} from 'angular2-notifications';
+import { NotificationsService } from 'angular2-notifications';
+
 
 @Component({
     selector: 'admin-edit-servie-item',
@@ -13,16 +16,25 @@ import {DomSanitizer} from '@angular/platform-browser';
 })
 export class AdminEditServiceItemComponent {
     
+    public options = {
+        position: ["bottom", "right"],
+        timeOut: 2000,
+        lastOnBottom: true
+    }
+
     model:any = null;
 
     constructor( 
+        private notificationsService:NotificationsService,
         private router:Router,
         private activatedRoute:ActivatedRoute,
         private serviceItemService:ServiceItemService,
         private fileService: FileService,
         private serviceItemVideoService: ServiceItemVideoService,
         private domSanitizer: DomSanitizer
-    ){}
+    ){
+        //console.log('notificationService:',this.notificationsService);
+    }
     
     ngOnInit(){
         this.activatedRoute.paramMap
@@ -43,24 +55,13 @@ export class AdminEditServiceItemComponent {
         this.serviceItemService.create(this.model).subscribe(
             data=> {
                 this.router.navigateByUrl('/ad/serviceitems')
-                //console.log(data);
-                // var index = this.items.findIndex(i=>i.id === data.id);
-                // if(index === -1) this.items.unshift(data);
-                // else {
-                //     this.items.splice(index,1);
-                //     this.items.unshift(data);
-                // }
-                
-                // this.loading = false;
             }
         );
-        
     }
 
     deleteImage(img:any) {
         
                 if( !confirm('确定删除该图片?') ) return false;
-        
                 
                 this.serviceItemService.deleteImage(img.id,img.url)
                 .subscribe(res=>{
@@ -68,6 +69,8 @@ export class AdminEditServiceItemComponent {
                         var images = this.model.images as any[];
                         var imgIndex = images.findIndex(x => x.id == img.id);
                         this.model.images.splice(imgIndex,1);
+
+                        this.notificationsService.success('done');
                     }
                 });
     }
@@ -92,7 +95,10 @@ export class AdminEditServiceItemComponent {
 
         .subscribe(
             res=>{
-                if(res.done) this.model.images.push(res.newImage);
+                if(res.done) {
+                    this.model.images.push(res.newImage);
+                    this.notificationsService.success('done');
+                }
                 else alert(res.msg);
             }
         )
@@ -113,6 +119,7 @@ export class AdminEditServiceItemComponent {
                 var videos = this.model.videos as any[];
                 var imgIndex = videos.findIndex(x => x.id == v.id);
                 this.model.videos.splice(imgIndex,1);
+                this.notificationsService.success('done');
             }
         );
     }
@@ -122,6 +129,7 @@ export class AdminEditServiceItemComponent {
         this.serviceItemVideoService.create(item).subscribe(
             data => {
                 this.model.videos.unshift(data);
+                this.notificationsService.success('done');
             }
         )
     }

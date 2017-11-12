@@ -32,12 +32,16 @@ import {AppErrorHandler} from './app-error-handler';
 import { Summary } from './pipes/Summary';
 
 
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { NotificationsService } from 'angular2-notifications';
+
 @NgModule({
     providers:[
         ServiceItemService,
         FileService,
         ServiceItemVideoService,
-        {provide:ErrorHandler,useClass:AppErrorHandler}
+        {provide:ErrorHandler,useClass:AppErrorHandler},
+        NotificationsService
     ],
     declarations: [
         AppComponent,
@@ -55,6 +59,7 @@ import { Summary } from './pipes/Summary';
         Summary
     ],
     imports: [
+        SimpleNotificationsModule,
         CommonModule,
         HttpModule,
         FormsModule,

@@ -233,6 +233,11 @@
       "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-1.0.1.tgz",
       "integrity": "sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU="
     },
+    "angular2-notifications": {
+      "version": "0.9.6",
+      "resolved": "https://registry.npmjs.org/angular2-notifications/-/angular2-notifications-0.9.6.tgz",
+      "integrity": "sha1-zMQrCT7DIoYLZ78Itm0gLYKXVtI="
+    },
     "angular2-template-loader": {
       "version": "0.6.2",
       "resolved": "https://registry.npmjs.org/angular2-template-loader/-/angular2-template-loader-0.6.2.tgz",
