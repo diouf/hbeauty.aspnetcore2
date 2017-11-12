@@ -1,21 +1,136 @@
-
-<h1>file upload</h1>
 <div class="container">
   <div class="row">
-    
-    <form role="form" #fImage="ngForm">
-        
-    <div class="form-group">
-        <label for="file"></label>
-        <input ngModel name="imageUrl" (change)="onImageFileChange($event)" 
-        multiple type="file"  class="form-control">
-    </div>
-    
-    <button [disabled]="!fImage.valid" class="btn btn-primary">保存</button>
+    <a [routerLink]="['/ad/serviceitems']" class="btn btn-default">
+        <i class="fa fa-arrow-left" aria-hidden="true" style="margin-right:10px;"></i>返回
+    </a>
+  </div>
 
-    </form>
+  <div  class="row">
+      
+      <div class="panel-group" id="accordion">
+              
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">信息</a>
+                  </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                      <div class="form-area">
+                          <form *ngIf="model != null" role="form" #f="ngForm" (ngSubmit)="onSubmit(f)" >
+                              
+                              <div class="form-group">
+                                  <label for="name_Cht">中文名</label>
+                                  <input 
+                                  [(ngModel)] = "model.name_Cht"
+                                  type="text" class="form-control" id="name_Cht" name="name_Cht" required>
+                              </div>
+                                  
+                              <div class="form-group">
+                                  <label for="description">中文描述</label>
+                                  <textarea 
+                                  [(ngModel)] = "model.description"
+                                  class="form-control" type="textarea" id="description" name="description" rows="20"></textarea>
+                              </div>
+                              
+                              <div class="form-group">
+                                      <label for="name_Eng">英文名</label>
+                                      <input 
+                                      [(ngModel)] = "model.name_Eng"
+                                      type="text" class="form-control" id="name_Eng" name="name_Eng" required>
+                              </div>
+                                  
+                              <div class="form-group">
+                                  <label for="description_Eng">英文描述</label>
+                                  <textarea 
+                                  [(ngModel)] = "model.description_Eng"
+                                  class="form-control" type="textarea" id="description_Eng" name="description_Eng" rows="20"></textarea>
+                              </div>
+
+                              <button [disabled]="!f.valid" class="btn btn-default">保存</button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">图片</a>
+                  </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                      <form *ngIf="model != null" role="form" #fImage="ngForm">
+                          <table class="table table-striped table-bordered table-list">
+                              <tr *ngFor="let i of model.images">
+                                  <td><a (click)="deleteImage(i)" class="btn btn-default"><em class="fa fa-trash"></em></a></td>
+                                  <td><img [src]="i.url" class="img-thumbnail"></td>
+                              </tr>
+                          </table>
+                          <div class="form-group">
+                              <label class="btn btn-default">
+                                  <input ngModel name="imageurl" (change)="onImageFileChange($event)" 
+                                  type="file"  class="form-control" style="display: none;">
+                                  上传图片
+                              </label>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">视频</a>
+                  </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse in">
+                  <div *ngIf="model != null" class="panel-body">
+                      <form #fVideo="ngForm" (ngSubmit)="onVideoSubmit(fVideo)">
+                          <table class="table table-striped table-bordered table-list">
+                              <tbody>
+                                  <tr *ngFor="let v of model.videos">
+                                      <td class="col-xs-2"><a (click)="deleteVideo(v)" class="btn btn-default"><em class="fa fa-trash"></em></a></td>
+                                      <td class="col-xs-10">
+                                          <div *ngIf="v.url.length>0" class="embed-responsive embed-responsive-16by9">
+                                                  <iframe [src]="handleVidUrl(v.url)" class="embed-responsive-item" allowfullscreen>
+                                                  </iframe>
+                                          </div>
+                                      </td>
+                                  </tr>
+                              </tbody>
+
+                              <tfoot>
+                                  <tr>
+                                      <td colspan="9">
+                                          <div class="form-group">
+                                                  <label>{{model.name_Cht}}的视频网址</label>
+                                                  <input
+                                                  [(ngModel)] = "model.id" style="display:none;"
+                                                  type="text" class="form-control" name="serviceItemId" >
+                                                  
+                                                  <input 
+                                                  ngModel
+                                                  type="text" class="form-control" name="url" required>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td colspan="9" class="col-xs-12">
+                                          <button [disabled]="!fVideo.valid" class="btn btn-default">保存</button>
+                                      </td>
+                                  </tr>
+                              </tfoot>
+                          </table>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
 
   </div>
 </div>
-
-

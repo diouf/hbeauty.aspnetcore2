@@ -1,6 +1,10 @@
+import {Router,ActivatedRoute} from '@angular/router'
 import { FileService } from './../../services/file.service';
 import { ServiceItemService } from './../../services/serviceitem.service';
 import { Component } from '@angular/core';
+import { ServiceItemVideoService } from './../../services/serviceitemvideo.service';
+import {DomSanitizer} from '@angular/platform-browser';
+
 
 @Component({
     selector: 'admin-edit-servie-item',
@@ -8,14 +12,70 @@ import { Component } from '@angular/core';
     styleUrls: ['./admin-edit-service-item.component.css']
 })
 export class AdminEditServiceItemComponent {
-
-    constructor( private serviceItemService:ServiceItemService,private fileService: FileService){}
     
+    model:any = null;
+
+    constructor( 
+        private router:Router,
+        private activatedRoute:ActivatedRoute,
+        private serviceItemService:ServiceItemService,
+        private fileService: FileService,
+        private serviceItemVideoService: ServiceItemVideoService,
+        private domSanitizer: DomSanitizer
+    ){}
+    
+    ngOnInit(){
+        this.activatedRoute.paramMap
+        .subscribe(params=>{
+           let id = params.get('serviceItemId');
+           if(id!=null) this.getItem(parseInt(id));
+        });
+    }
+
+    getItem(id:number){
+        this.serviceItemService.getById(id).subscribe(
+            model=> {
+                this.model = model;
+            }
+        );
+    }
+    onSubmit(){
+        this.serviceItemService.create(this.model).subscribe(
+            data=> {
+                this.router.navigateByUrl('/ad/serviceitems')
+                //console.log(data);
+                // var index = this.items.findIndex(i=>i.id === data.id);
+                // if(index === -1) this.items.unshift(data);
+                // else {
+                //     this.items.splice(index,1);
+                //     this.items.unshift(data);
+                // }
+                
+                // this.loading = false;
+            }
+        );
+        
+    }
+
+    deleteImage(img:any) {
+        
+                if( !confirm('确定删除该图片?') ) return false;
+        
+                
+                this.serviceItemService.deleteImage(img.id,img.url)
+                .subscribe(res=>{
+                    if(res.done){
+                        var images = this.model.images as any[];
+                        var imgIndex = images.findIndex(x => x.id == img.id);
+                        this.model.images.splice(imgIndex,1);
+                    }
+                });
+    }
+
     onImageFileChange (event:any){
         let files = event.target.files; 
         this.saveFiles(files);
     }
-    
     private saveFiles(files:any[]){
         if(files.length === 0 ) return;
 
@@ -25,16 +85,44 @@ export class AdminEditServiceItemComponent {
         }
 
         var parameters = {
-            serviceItemId:123
+            serviceItemId:this.model.id
         }
-
+        
         this.fileService.uploadServiceItemImage(formData,parameters)
+
         .subscribe(
-            data=>{
-                console.log(data);
+            res=>{
+                if(res.done) this.model.images.push(res.newImage);
+                else alert(res.msg);
             }
         )
         
     }
 
+    handleVidUrl(url:string){
+        if(url.length===0) return null;
+        return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+    }
+
+    deleteVideo(v:any){
+        if( !confirm('确定删除该视频?') ) return false;
+
+        this.serviceItemVideoService.delete(v.id).subscribe(
+            res =>{
+                
+                var videos = this.model.videos as any[];
+                var imgIndex = videos.findIndex(x => x.id == v.id);
+                this.model.videos.splice(imgIndex,1);
+            }
+        );
+    }
+
+    onVideoSubmit(fVideo:any){
+        var item = fVideo.value;
+        this.serviceItemVideoService.create(item).subscribe(
+            data => {
+                this.model.videos.unshift(data);
+            }
+        )
+    }
 }
