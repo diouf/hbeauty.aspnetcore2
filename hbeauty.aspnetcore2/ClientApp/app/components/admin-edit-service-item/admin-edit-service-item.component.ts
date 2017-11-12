@@ -5,9 +5,7 @@ import { Component } from '@angular/core';
 import { ServiceItemVideoService } from './../../services/serviceitemvideo.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
-import {SimpleNotificationsComponent} from 'angular2-notifications';
-import { NotificationsService } from 'angular2-notifications';
-
+import {SimpleNotificationsComponent,NotificationsService} from 'angular2-notifications';
 
 @Component({
     selector: 'admin-edit-servie-item',

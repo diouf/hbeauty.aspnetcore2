@@ -32,8 +32,7 @@ import {AppErrorHandler} from './app-error-handler';
 import { Summary } from './pipes/Summary';
 
 
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { NotificationsService } from 'angular2-notifications';
+import { SimpleNotificationsModule,NotificationsService } from 'angular2-notifications';
 
 @NgModule({
     providers:[
