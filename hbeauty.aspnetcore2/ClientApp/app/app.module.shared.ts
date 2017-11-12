@@ -63,9 +63,10 @@ import { Summary } from './pipes/Summary';
             { path: '', component:HomeComponent},
 
             { path: 'ad', component:AdminComponent,
-              children:[{
-                  path: 'serviceitems', component: AdminServiceItemComponent
-              }]
+              children: [
+                  {path: 'serviceitems', component: AdminServiceItemComponent},
+                  //{path: '', redirectTo: 'serviceitems'},
+                ]
             },
             
             { path:'h-admin',component:AdminServiceItemComponent},
