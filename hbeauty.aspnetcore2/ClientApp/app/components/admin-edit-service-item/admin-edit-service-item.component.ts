@@ -21,6 +21,7 @@ export class AdminEditServiceItemComponent {
     }
 
     model:any = null;
+    isEdit: boolean = false;
 
     constructor( 
         private notificationsService:NotificationsService,
@@ -36,9 +37,13 @@ export class AdminEditServiceItemComponent {
     
     ngOnInit(){
         this.activatedRoute.paramMap
-        .subscribe(params=>{
-           let id = params.get('serviceItemId');
-           if(id!=null) this.getItem(parseInt(id));
+            .subscribe(params => {
+            let tmpid = params.get('serviceItemId')||'0';
+            let id = parseInt(tmpid);
+
+            this.isEdit = id > 0;
+
+            this.getItem(id);
         });
     }
 

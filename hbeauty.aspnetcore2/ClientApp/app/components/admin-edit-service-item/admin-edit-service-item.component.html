@@ -57,7 +57,7 @@
               </div>
           </div>
 
-          <div class="panel panel-default">
+          <div *ngIf="isEdit" class="panel panel-default">
               <div class="panel-heading">
                   <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">图片</a>
@@ -84,7 +84,7 @@
               </div>
           </div>
 
-          <div class="panel panel-default">
+          <div *ngIf="isEdit" class="panel panel-default">
               <div class="panel-heading">
                   <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">视频</a>

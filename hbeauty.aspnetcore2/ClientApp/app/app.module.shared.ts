@@ -72,8 +72,8 @@ import { SimpleNotificationsModule,NotificationsService } from 'angular2-notific
                   {path: 'serviceitems/:serviceItemId', component: AdminEditServiceItemComponent}
                 ]
             },
-
-            { path: 'dion', redirectTo:'ad'},
+            { path: 'dion', redirectTo: 'ad/serviceitems' },
+            { path: 'mia', redirectTo: 'ad/serviceitems' },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo:''}
         ]),
