@@ -1,3 +1,4 @@
+
 import { NotfoundError } from './not-found-error';
 import { AppError } from './app-error';
 import { Inject } from '@angular/core';
@@ -8,6 +9,7 @@ import 'rxjs/add/operator/map';
 
 import {Observable} from 'rxjs/Rx';
 
+
 /*
 
 import {Observable} from 'rxjs/Rx';
@@ -16,7 +18,8 @@ import 'rxjs/add/Observable/throw';
 import {Observable} from 'rxjs/Observable';
 
 */
-//@Injectable()
+
+
 export class DataService{
 
     // constructor(private url:string, private http:Http,  @Inject('BASE_URL') private baseUrl?: string ){

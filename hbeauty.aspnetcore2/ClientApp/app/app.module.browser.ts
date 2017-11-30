@@ -4,19 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.module.shared';
 import { AppComponent } from './components/app/app.component';
 
-import { SimpleNotificationsModule } from 'angular2-notifications';
-import { NotificationsService } from 'angular2-notifications';
-
 @NgModule({
     bootstrap: [ AppComponent ],
     imports: [
         BrowserModule,
         AppModuleShared,
         BrowserAnimationsModule,
-        SimpleNotificationsModule.forRoot()
     ],
     providers: [
-        NotificationsService,
         { provide: 'BASE_URL', useFactory: getBaseUrl }
     ]
 })

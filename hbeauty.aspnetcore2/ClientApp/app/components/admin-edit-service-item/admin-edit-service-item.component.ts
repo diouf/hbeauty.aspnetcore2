@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { ServiceItemVideoService } from './../../services/serviceitemvideo.service';
 import {DomSanitizer} from '@angular/platform-browser';
 
-import {SimpleNotificationsComponent,NotificationsService} from 'angular2-notifications';
+//import {SimpleNotificationsComponent,NotificationsService} from 'angular2-notifications';
 
 @Component({
     selector: 'admin-edit-servie-item',
@@ -24,7 +24,7 @@ export class AdminEditServiceItemComponent {
     isEdit: boolean = false;
 
     constructor( 
-        private notificationsService:NotificationsService,
+        //private notificationsService:NotificationsService,
         private router:Router,
         private activatedRoute:ActivatedRoute,
         private serviceItemService:ServiceItemService,
@@ -72,8 +72,8 @@ export class AdminEditServiceItemComponent {
                         var images = this.model.images as any[];
                         var imgIndex = images.findIndex(x => x.id == img.id);
                         this.model.images.splice(imgIndex,1);
-
-                        this.notificationsService.success('done');
+                        alert('done');
+                        //this.notificationsService.success('done');
                     }
                 });
     }
@@ -100,7 +100,8 @@ export class AdminEditServiceItemComponent {
             res=>{
                 if(res.done) {
                     this.model.images.push(res.newImage);
-                    this.notificationsService.success('done');
+                    alert('done');
+                    //this.notificationsService.success('done');
                 }
                 else alert(res.msg);
             }
@@ -121,8 +122,9 @@ export class AdminEditServiceItemComponent {
                 
                 var videos = this.model.videos as any[];
                 var imgIndex = videos.findIndex(x => x.id == v.id);
-                this.model.videos.splice(imgIndex,1);
-                this.notificationsService.success('done');
+                this.model.videos.splice(imgIndex, 1);
+                alert('done');
+                //this.notificationsService.success('done');
             }
         );
     }
@@ -132,7 +134,8 @@ export class AdminEditServiceItemComponent {
         this.serviceItemVideoService.create(item).subscribe(
             data => {
                 this.model.videos.unshift(data);
-                this.notificationsService.success('done');
+                alert('done');
+                //this.notificationsService.success('done');
             }
         )
     }

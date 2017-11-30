@@ -15,11 +15,13 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+
 import { ServiceItemComponent } from './components/serviceitem/serviceitem.component';
 
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminServiceItemComponent } from './components/admin-service-item/admin-service-item.component';
 import { AdminEditServiceItemComponent } from './components/admin-edit-service-item/admin-edit-service-item.component';
+
 
 //services
 import { ServiceItemService } from './services/serviceitem.service';
@@ -31,8 +33,7 @@ import {AppErrorHandler} from './app-error-handler';
 //pipes
 import { Summary } from './pipes/Summary';
 
-
-import { SimpleNotificationsModule,NotificationsService } from 'angular2-notifications';
+//import { SimpleNotificationsModule,NotificationsService } from 'angular2-notifications';
 
 @NgModule({
     providers:[
@@ -40,7 +41,7 @@ import { SimpleNotificationsModule,NotificationsService } from 'angular2-notific
         FileService,
         ServiceItemVideoService,
         {provide:ErrorHandler,useClass:AppErrorHandler},
-        NotificationsService
+        //NotificationsService
     ],
     declarations: [
         AppComponent,
@@ -50,22 +51,24 @@ import { SimpleNotificationsModule,NotificationsService } from 'angular2-notific
         HomeComponent,
         HeaderComponent,
         InfoComponent,
-        ServiceItemComponent,
         IntroComponent,
+        
+        ServiceItemComponent,
         AdminComponent,
         AdminServiceItemComponent,
         AdminEditServiceItemComponent,
         Summary
+        
     ],
     imports: [
-        SimpleNotificationsModule,
+        //SimpleNotificationsModule,
         CommonModule,
         HttpModule,
         FormsModule,
         
         RouterModule.forRoot([
             { path: '', component:HomeComponent},
-
+            
             { path: 'ad', component:AdminComponent,
               children:[
                   {path: 'serviceitems', component: AdminServiceItemComponent},
@@ -74,6 +77,7 @@ import { SimpleNotificationsModule,NotificationsService } from 'angular2-notific
             },
             { path: 'dion', redirectTo: 'ad/serviceitems' },
             { path: 'mia', redirectTo: 'ad/serviceitems' },
+            
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo:''}
         ]),
