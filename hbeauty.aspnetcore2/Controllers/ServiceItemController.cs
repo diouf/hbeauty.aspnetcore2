@@ -65,5 +65,18 @@ namespace hbeauty.aspnetcore2.Controllers
             await _db.SaveChangesAsync();
             return Json(item);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var item =await _db.Set<ServiceItem>().SingleOrDefaultAsync(s => s.Id == id);
+            if (item != null)
+            {
+                _db.Remove(item);
+                await _db.SaveChangesAsync();
+            }
+
+            return Json(new { done = true });
+        }
     }
 }

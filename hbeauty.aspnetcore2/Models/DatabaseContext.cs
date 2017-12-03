@@ -24,19 +24,21 @@ namespace hbeauty.aspnetcore2.Models
             builder.Entity<ServiceItemImage>()
                 .HasOne(o => o.ServiceItem)
                 .WithMany(o => o.Images)
-                .HasForeignKey(o => o.ServiceItemId);
+                .HasForeignKey(o => o.ServiceItemId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ServiceItemVideo>()
                 .HasOne(o => o.ServiceItem)
                 .WithMany(o => o.Videos)
-                .HasForeignKey(o => o.ServiceItemId);
+                .HasForeignKey(o => o.ServiceItemId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             /*
             builder.Entity<ServiceItem>()
                 .HasMany(p => p.Images)
                 .WithOne(p => p.ServiceItem)
                 .HasForeignKey(p => p.ServiceItemId);
-
+            
             builder.Entity<ServiceItem>()
                 .HasMany(p => p.Videos)
                 .WithOne(p => p.ServiceItem)

@@ -1,4 +1,4 @@
-
+﻿
 import { ServiceItemService } from './../../services/serviceitem.service';
 
 import { Component } from '@angular/core';
@@ -23,7 +23,20 @@ export class AdminServiceItemComponent {
         );
     }
 
-    
+    delete(id: number) {
+
+        if (!confirm('确定删除?')) return false;
+
+        this.serviceItemService.delete(id).subscribe(
+            res => {
+                if (res.done) {
+                    var itemIndex = this.items.findIndex(x => x.id == id);
+                    this.items.splice(itemIndex, 1);
+                    alert('done');
+                }
+            }
+        )
+    }
 
 
     

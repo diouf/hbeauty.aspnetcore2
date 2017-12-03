@@ -30,8 +30,7 @@
                                 <tr *ngFor=" let item of items ">
                                     <td align="center">
                                         <a [routerLink]="['./', item.id]" class="btn btn-default"><em class="fa fa-pencil"></em></a>
-                                        <!-- <a (click)="getItem(item.id)" class="btn btn-default"><em class="fa fa-pencil"></em></a> -->
-                                        <a class="btn btn-default"><em class="fa fa-trash"></em></a>
+                                        <a (click)="delete(item.id)" class="btn btn-default"><em class="fa fa-trash"></em></a>
                                     </td>
                                     <td class="hidden-xs">{{item.id}}</td>
                                     <td>{{item.name_Cht}}</td>
